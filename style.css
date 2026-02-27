@@ -27,10 +27,9 @@ main {
 
 #expenses {
     display: grid;
-    grid-template-areas: 
-    'ml f&e' 
-    'ins other';
-    grid-gap: 10px;
+    grid-template-areas: "ml fe" 
+                         "ins other";
+    gap: 10px;
     padding: 10px;
 }
 
@@ -39,7 +38,7 @@ main {
 }
 
 #foodEssentials {
-    grid-area: 'f&e';
+    grid-area: 'fe';
 }
 
 #insurance {
@@ -48,4 +47,75 @@ main {
 
 #otherExpenses {
     grid-area: 'other';
+}
+
+/*Formats the panels into row (cost inputs)*/
+.panel{
+    width: 50%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto(4, 1fr);
+}
+
+/*Change theses values to be unique for each div. You need to give each input element from the HTML file a unique class, then link each input to their respecive CSS files*/
+/*For monthly*/
+input, div.monthly-liabilities {
+    display: none;
+}
+
+label {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+input:checked~div.monthly-liabilities {
+    display: block;
+}
+
+
+/*For food*/
+input, div.food-essentials {
+    display: none;
+}
+
+label {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+input:checked~div.food-essentials {
+    display: block;
+}
+
+
+/*For insurance*/
+input, div.insurance {
+    display: none;
+}
+
+label {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+input:checked~div.insurance {
+    display: block;
+}
+
+/*For other*/
+input, div.other-expenses {
+    display: none;
+}
+
+label {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+input:checked~div.other-expenses {
+    display: block;
 }

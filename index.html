@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Calculator</title>
+    <script type="module" src="./app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,20 +20,48 @@
     
         <section id="expenses">
             <section id="monthlyLiabilities">
-                <button>Monthly Liabilities</button> <!-- Make this an accordion -->
-                <div class="panel"> <!-- make this class-->
+                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                <label for="dropCheck">Monthly Liabilities</label>
+                <div class="panel monthly-liabilities"> <!-- make this class-->
                     <!-- Add the plus button and all input fields into here and do it for all the other sections-->
-                    <p>This is the content for section 2.</p>
+                    <img src="../images/add.png" alt="Add cost field button">
+                    <cost-inputs name="House Payment"></cost-inputs>
+                    <cost-inputs name="Car Payment"></cost-inputs>
+                    <cost-inputs name="Credit Card"></cost-inputs>
+                    <cost-inputs name="Other Debts"></cost-inputs>
                 </div>
             </section>
+           
             <section id="foodEssentials">
-    
+                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                <label for="dropCheck">Foods &amp; Essentials</label>
+                <div class="panel food-essentials">
+                    <img src="../images/add.png" alt="Add cost field button">
+                    <cost-inputs name="Groceries"></cost-inputs>
+                    <cost-inputs name="Gas and Travel"></cost-inputs>
+                    <cost-inputs name="Child Care"></cost-inputs>
+                    <cost-inputs name="Medical"></cost-inputs>
+                </div>
+
             </section>
             <section id="insurance">
-    
+                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                <label for="dropCheck">Insurance</label>
+                <div class="panel insurance">
+                    <img src="../images/add.png" alt="Add cost field button">
+                    <cost-inputs name="Auto Insurance"></cost-inputs>
+                    <cost-inputs name="Home Insurance"></cost-inputs>
+                    <cost-inputs name="Health Insurance"></cost-inputs>
+                    <cost-inputs name="Life Insurance"></cost-inputs>
+                </div>
             </section>
             <section id="otherExpenses">
-    
+                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                <label for="dropCheck">Other Expenses</label>
+                <div class="panel other-expenses">
+                    <img src="../images/add.png" alt="Add cost field button">
+                    <cost-inputs name="Other"></cost-inputs>
+                </div>
             </section>
         </section>
     
@@ -42,5 +71,12 @@
             </section>
         </section>
     </main>
+    <template id="cost-input">
+        <label for="cost">Words</label>
+        <input type="number" id="cost" name="cost" placeholder="">
+    </template>
+    <template>
+
+    </template> 
 </body>
 </html>
