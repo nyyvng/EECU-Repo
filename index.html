@@ -8,68 +8,105 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <img src="images/EECU website Logo.png">
-    </nav>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>EECU Budget Calculator</h1>
+            </div>
+        </nav>
+        
+    </header>
 
     <main>
-        <section id="income">
-            <label for="income">Monthly after tax income:   $</label>
-            <input type="number" type="income" name="income">
-        </section>
-    
-        <section id="expenses">
-            <section id="monthlyLiabilities">
-                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
-                <label for="dropCheck">Monthly Liabilities</label>
-                <div class="panel monthly-liabilities"> <!-- make this class-->
-                    <!-- Add the plus button and all input fields into here and do it for all the other sections-->
-                    <img src="../images/add.png" alt="Add cost field button">
-                    <cost-inputs name="House Payment"></cost-inputs>
-                    <cost-inputs name="Car Payment"></cost-inputs>
-                    <cost-inputs name="Credit Card"></cost-inputs>
-                    <cost-inputs name="Other Debts"></cost-inputs>
+        <section id="calculator">
+            <h2>Career Info:</h2>
+            <div class="flex">
+                <div id="career" class="flex column">
+                    <label for="career">Select a Career: </label>
+                    <select name="career" id="career">
+                        <option selected value="100000">Basic 100k</option>
+                    </select>   
                 </div>
-            </section>
-           
-            <section id="foodEssentials">
-                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
-                <label for="dropCheck">Foods &amp; Essentials</label>
-                <div class="panel food-essentials">
-                    <img src="../images/add.png" alt="Add cost field button">
-                    <cost-inputs name="Groceries"></cost-inputs>
-                    <cost-inputs name="Gas and Travel"></cost-inputs>
-                    <cost-inputs name="Child Care"></cost-inputs>
-                    <cost-inputs name="Medical"></cost-inputs>
+                <div id="income" class="flex column">
+                    <label for="income">Annual Salary: $</label>
+                     <input type="number" id="income">
                 </div>
+            </div>
 
-            </section>
-            <section id="insurance">
-                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
-                <label for="dropCheck">Insurance</label>
-                <div class="panel insurance">
-                    <img src="../images/add.png" alt="Add cost field button">
-                    <cost-inputs name="Auto Insurance"></cost-inputs>
-                    <cost-inputs name="Home Insurance"></cost-inputs>
-                    <cost-inputs name="Health Insurance"></cost-inputs>
-                    <cost-inputs name="Life Insurance"></cost-inputs>
-                </div>
-            </section>
-            <section id="otherExpenses">
-                <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
-                <label for="dropCheck">Other Expenses</label>
-                <div class="panel other-expenses">
-                    <img src="../images/add.png" alt="Add cost field button">
-                    <cost-inputs name="Other"></cost-inputs>
-                </div>
+            <div id="expenses">
+                <section id="income-taxes">
+                    <div class="section-header">
+                        <h3>Income Taxes</h3>
+                    </div>
+                    <input id="dropCheck" type="checkbox" name="Income Taxes" />
+                    <label for="dropCheck">Income Taxes</label>
+                    <div class="panel income-taxes">
+                        <img src="../images/add.png" alt="Add cost field button">
+                        <cost-inputs name="Federal Income Tax"></cost-inputs>
+                        <cost-inputs name="State Income Tax"></cost-inputs>
+                        <cost-inputs name="Social Security"></cost-inputs>
+                        <cost-inputs name="Medicare"></cost-inputs>
+                    </div>
+                </section>
+
+
+                <section id="monthlyLiabilities">
+                    <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                    <label for="dropCheck">Monthly Liabilities</label>
+                    <div class="panel monthly-liabilities"> <!-- make this class-->
+                        <!-- Add the plus button and all input fields into here and do it for all the other sections-->
+                        <img src="../images/add.png" alt="Add cost field button">
+                        <cost-inputs name="House Payment"></cost-inputs>
+                        <cost-inputs name="Car Payment"></cost-inputs>
+                        <cost-inputs name="Credit Card"></cost-inputs>
+                        <cost-inputs name="Other Debts"></cost-inputs>
+                    </div>
+                </section>
+               
+                <section id="foodEssentials">
+                    <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                    <label for="dropCheck">Foods &amp; Essentials</label>
+                    <div class="panel food-essentials">
+                        <img src="../images/add.png" alt="Add cost field button">
+                        <cost-inputs name="Groceries"></cost-inputs>
+                        <cost-inputs name="Gas and Travel"></cost-inputs>
+                        <cost-inputs name="Child Care"></cost-inputs>
+                        <cost-inputs name="Medical"></cost-inputs>
+                    </div>
+    
+                </section>
+                <section id="insurance">
+                    <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                    <label for="dropCheck">Insurance</label>
+                    <div class="panel insurance">
+                        <img src="../images/add.png" alt="Add cost field button">
+                        <cost-inputs name="Auto Insurance"></cost-inputs>
+                        <cost-inputs name="Home Insurance"></cost-inputs>
+                        <cost-inputs name="Health Insurance"></cost-inputs>
+                        <cost-inputs name="Life Insurance"></cost-inputs>
+                    </div>
+                </section>
+                <section id="otherExpenses">
+                    <input id="dropCheck" type="checkbox" name="Monthly Liabilities" />
+                    <label for="dropCheck">Other Expenses</label>
+                    <div class="panel other-expenses">
+                        <img src="../images/add.png" alt="Add cost field button">
+                        <cost-inputs name="Other"></cost-inputs>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section id="chart">
+            <h2>Chart Content Here</h2>
+            <section id="analysis">
+                <section id="analysisStatistics">
+                    
+                </section>
             </section>
         </section>
     
-        <section id="analysis">
-            <section id="analysisStatistics">
-                
-            </section>
-        </section>
+    
     </main>
     <template id="cost-input">
         <label for="cost">Words</label>
