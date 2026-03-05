@@ -3,6 +3,7 @@
     --secondary-color: white;
     --accent-color: #FF6F61;
     --text-color: #333333;
+    --third-color: #BCD4EA;
     --background-color: #E8F3FC;
     --column-gap: 40px;
 }
@@ -73,6 +74,7 @@ main > section {
     display:  grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    margin-right: 50px;
 }
 .flex {
     display: flex;
@@ -205,6 +207,7 @@ input:checked~div.other-expenses {
 }
 
 #dropCheck {
+    margin-right: 10px;
     max-width: 20px;
     max-height: 20px;
     background-image: url(images/dropdown.png);
@@ -213,6 +216,16 @@ input:checked~div.other-expenses {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    
+}
 
+.monthlyStats{
+    display: grid;
+    grid-area: 1fr 1fr / 1fr 1fr;
+    grid-template-areas: 'mi me'
+                         'ms ys' ;
+    gap: 10px;
+}
+
+#expenses input{
+    max-width: 100px;
 }
