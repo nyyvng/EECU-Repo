@@ -35,6 +35,7 @@
                 </div>
             </div>
 
+            <!-- INCOME TAXES -->
             <div id="expenses">
                 <section id="income-taxes">
                     <div class="section-header">
@@ -43,18 +44,27 @@
                     </div>
                     <div class="panel income-taxes">
                         <img src="../images/add.png" alt="Add cost field button">
-                        Federal Income Tax
-                        <input name="Federal Income Tax"></input> <!--changed to normal inputs from cost inputs-->
-                        <span>State Income Tax</span>
-                        <input name="State Income Tax"></input>
-                        <span>Social Security</span>
-                        <input name="Social Security"></input>
-                        <span>Medicare</span>
-                        <input name="Medicare"></input>
+                        <section class="inputSection">
+                            <span>Federal Income Tax</span>
+                            <input name="Federal Income Tax"></input>
+                        </section>
+                        <section class="inputSection">
+                            <span>State Income Tax</span>
+                            <input name="State Income Tax"></input>
+                        </section>
+                        <section class="inputSection">
+                            <span>Social Security</span>
+                            <input name="Social Security"></input>
+                        </section>
+                        <section class="inputSection">
+                            <span>Medicare</span>
+                            <input name="Medicare"></input>
+                        </section>
+
                     </div>
                 </section>
 
-
+                <!-- MONTHLY LIABILITIES -->
                 <section id="monthlyLiabilities">
                     <div class="section-header">
                         <h3>Monthly Liabilities</h3>
@@ -63,18 +73,26 @@
                     <div class="panel monthly-liabilities"> <!-- make this class-->
                         <!-- Add the plus button and all input fields into here and do it for all the other sections-->
                         <img src="../images/add.png" alt="Add cost field button">
-                        <span>House Payment</span>
-                        <input name="House Payment"></input>
-                        <!--to align these next to each other i was thinking that you could put each input and span inside a section and make the flex direction a column but if you jave any other ideas you can do that-->
-                        <span>Car Payment</span>
-                        <input name="Car Payment"></input>
-                        <span>Credit Card </span>
-                        <input name="Credit Card"></input>
-                        <span>Other Debts</span>
-                        <input name="Other Debts"></input>
+                        <section class="inputSection">
+                            <span>House Payment</span>
+                            <input name="House Payment"></input>
+                        </section>
+                        <section class="inputSection">
+                            <span>Car Payment</span>
+                            <input name="Car Payment"></input>
+                        </section>
+                        <section class="inputSection">
+                            <span>Credit Card </span>
+                            <input name="Credit Card"></input>
+                        </section>
+                        <section class="inputSection">
+                            <span>Other Debts</span>
+                            <input name="Other Debts"></input>
+                        </section>
                     </div>
                 </section>
 
+                <!-- FOOD & ESSENTIALS -->
                 <section id="foodEssentials">
                     <div class="section-header">
                         <h3>Food & Essentials</h3>
@@ -82,17 +100,31 @@
                     </div>
                     <div class="panel food-essentials">
                         <img src="../images/add.png" alt="Add cost field button">
-                        <span>Groceries</span>
-                        <input name="Groceries"></input>
-                        <span>Gas & Travel</span>
-                        <input name="Gas and Travel"></input>
+
+                        <section class="inputSection">
+                            <span>Groceries</span>
+                            <input name="Groceries"></input>
+                        </section>
+
+                        <section class="inputSection">
+                            <span>Gas & Travel</span>
+                            <input name="Gas and Travel"></input>
+                        </section>
+
+                        <section class="inputSection">
                         <span>Child Care</span>
                         <input name="Child Care"></input>
-                        <span>Medical</span>
-                        <input name="Medical"></input>
+                        </section>
+
+                        <section class="inputSection">
+                            <span>Medical</span>
+                            <input name="Medical"></input>
+                        </section>
                     </div>
 
                 </section>
+
+                <!-- INSURANCE -->
                 <section id="insurance">
                     <div class="section-header">
                         <h3>Insurance</h3>
@@ -100,16 +132,30 @@
                     </div>
                     <div class="panel insurance">
                         <img src="../images/add.png" alt="Add cost field button">
-                        <span>Auto Insurance</span>
-                        <input name="Auto Insurance"></input>
-                        <span>Home Insurance</span>
-                        <input name="Home Insurance"></input>
-                        <span>Health Insurance</span>
-                        <input name="Health Insurance"></input>
-                        <span>Life Insurance</span>
-                        <input name="Life Insurance"></input>
+
+                        <section class="inputSection">
+                            <span>Auto Insurance</span>
+                            <input name="Auto Insurance"></input>
+                        </section>
+
+                        <section class="inputSection">
+                            <span>Home Insurance</span>
+                            <input name="Home Insurance"></input>
+                        </section>
+
+                        <section class="inputSection">
+                            <span>Health Insurance</span>
+                            <input name="Health Insurance"></input>
+                        </section>
+
+                        <section class="inputSection">
+                            <span>Life Insurance</span>
+                            <input name="Life Insurance"></input>
+                        </section>
                     </div>
                 </section>
+
+                <!-- OTHER EXPENSES -->
                 <section id="otherExpenses">
                     <div class="section-header">
                         <h3>Other Expenses</h3>
@@ -117,7 +163,10 @@
                     </div>
                     <div class="panel other-expenses">
                         <img src="../images/add.png" alt="Add cost field button">
-                        <input name="Other"></input>
+                        <section class="inputSection">
+                            <span>Other Expenses</span>
+                            <input name="Other"></input>
+                        </section>
                     </div>
                 </section>
             </div>

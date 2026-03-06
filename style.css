@@ -3,6 +3,7 @@
     --secondary-color: white;
     --accent-color: #FF6F61;
     --text-color: #333333;
+    --second-text-color: #002649;
     --third-color: #BCD4EA;
     --background-color: #E8F3FC;
     --column-gap: 40px;
@@ -148,7 +149,7 @@ select, option, input {
 
 .panel input {
     width: 100%;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 /*Change theses values to be unique for each div. You need to give each input element from the HTML file a unique class, then link each input to their respecive CSS files*/
@@ -229,3 +230,29 @@ input:checked~div.other-expenses {
 #expenses input{
     max-width: 100px;
 }
+
+.inputSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0.5rem;
+    & span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 60%;
+        background-color: var(--third-color);
+        color: var(--second-text-color);
+        padding: 5px;
+        &::after {
+            content: "$";
+        }
+
+    }
+
+    & input {
+        width: 100px;
+    }
+}
+
