@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Calculator</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="./app.js"></script>
+    <script type="module" src="chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -44,23 +46,22 @@
                     </div>
                     <div class="panel income-taxes">
                         <img src="../images/add.png" alt="Add cost field button">
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Federal Income Tax</span>
                             <input name="Federal Income Tax"></input>
-                        </section>
-                        <section class="inputSection">
+                        </article>
+                        <article class="inputSection">
                             <span>State Income Tax</span>
                             <input name="State Income Tax"></input>
-                        </section>
-                        <section class="inputSection">
+                        </article>
+                        <article class="inputSection">
                             <span>Social Security</span>
                             <input name="Social Security"></input>
-                        </section>
-                        <section class="inputSection">
+                        </article>
+                        <article class="inputSection">
                             <span>Medicare</span>
                             <input name="Medicare"></input>
-                        </section>
-
+                        </article>
                     </div>
                 </section>
 
@@ -73,22 +74,22 @@
                     <div class="panel monthly-liabilities"> <!-- make this class-->
                         <!-- Add the plus button and all input fields into here and do it for all the other sections-->
                         <img src="../images/add.png" alt="Add cost field button">
-                        <section class="inputSection">
+                        <article class="inputSection" id="house">
                             <span>House Payment</span>
-                            <input name="House Payment"></input>
-                        </section>
-                        <section class="inputSection">
+                            <input name="House Payment" id="house"></input>
+                        </article>
+                        <article class="inputSection">
                             <span>Car Payment</span>
-                            <input name="Car Payment"></input>
-                        </section>
-                        <section class="inputSection">
+                            <input name="Car Payment" id="car"></input>
+                        </article>
+                        <article class="inputSection">
                             <span>Credit Card </span>
-                            <input name="Credit Card"></input>
-                        </section>
-                        <section class="inputSection">
+                            <input name="Credit Card" id="credit"></input>
+                        </article>
+                        <article class="inputSection">
                             <span>Other Debts</span>
-                            <input name="Other Debts"></input>
-                        </section>
+                            <input name="Other Debts" id="debts"></input>
+                        </article>
                     </div>
                 </section>
 
@@ -101,25 +102,25 @@
                     <div class="panel food-essentials">
                         <img src="../images/add.png" alt="Add cost field button">
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Groceries</span>
                             <input name="Groceries"></input>
-                        </section>
+                        </article>
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Gas & Travel</span>
                             <input name="Gas and Travel"></input>
-                        </section>
+                        </article>
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                         <span>Child Care</span>
                         <input name="Child Care"></input>
-                        </section>
+                        </article>
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Medical</span>
                             <input name="Medical"></input>
-                        </section>
+                        </article>
                     </div>
 
                 </section>
@@ -133,25 +134,25 @@
                     <div class="panel insurance">
                         <img src="../images/add.png" alt="Add cost field button">
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Auto Insurance</span>
                             <input name="Auto Insurance"></input>
-                        </section>
+                        </article>
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Home Insurance</span>
                             <input name="Home Insurance"></input>
-                        </section>
+                        </article>
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Health Insurance</span>
                             <input name="Health Insurance"></input>
-                        </section>
+                        </article>
 
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Life Insurance</span>
                             <input name="Life Insurance"></input>
-                        </section>
+                        </article>
                     </div>
                 </section>
 
@@ -163,10 +164,10 @@
                     </div>
                     <div class="panel other-expenses">
                         <img src="../images/add.png" alt="Add cost field button">
-                        <section class="inputSection">
+                        <article class="inputSection">
                             <span>Other Expenses</span>
                             <input name="Other"></input>
-                        </section>
+                        </article>
                     </div>
                 </section>
             </div>
@@ -175,7 +176,7 @@
 
 
         <section id="chart">
-            <h2>Chart Content Here</h2>
+            <canvas id="chart"></canvas>
             <section id="analysis">
                 <section id="analysisStatistics">
 
