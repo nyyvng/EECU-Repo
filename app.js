@@ -200,14 +200,17 @@ addEventListener('input', () => {
         document.querySelectorAll(
             'section > section > .monthlyStats > section > span'
         );
+    
+    const incomeValue = income?.textContent?.replace(/[$,]/g, '') || '0'; 
+    const expensesValue = expenses?.textContent?.replace(/[$,]/g, '') || '0';
     expenses.textContent = format_money(
         [...document.querySelectorAll('span[id^=total-]').values()].reduce(
-            (acc, curr) => acc + +curr.textContent,
+            (acc, curr) => acc + +curr.textContent, // still haviing errors
             0
         )
     );
     savings.textContent = format_money(
-        +income.textContent.replace(/[$,]/g, '') -
+        +income.textContent.replace(/[$,]/g, '') - // still having errors
             +expenses.textContent.replace(/[$,]/g, '')
     );
     yearly_savings.textContent = format_money(

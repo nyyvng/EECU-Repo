@@ -14,7 +14,7 @@ let currentChart = null;
 
 // Build chart config from current input values
 function buildChartConfig() {
-    const labels = ['Housing', 'Car Loans', 'Credit Cards', 'Other Debts'];
+    const labels = ['Income Taxes', 'Monthly Liabilities', 'Foods & Essentials', 'Insurance', 'Other Expenses'];
     const data = [taxes, liabilities, essentials, insurance, other].map(
         el => parseFloat(el.textContent) || 0
     );
@@ -28,11 +28,11 @@ function buildChartConfig() {
                     label: 'Monthly (USD)',
                     data,
                     backgroundColor: [
-                        '#8979FF',
-                        '#FF928A',
-                        '#3CC3DF',
-                        '#FFAE4C',
-                        '#537FF1'
+                        '#1C4F91',
+                        '#007CB9',
+                        '#00AAD0',
+                        '#00D6D5',
+                        '#AAFFFF'
                     ]
                     // Change color according to palette and amount of inputs
                 }
@@ -40,8 +40,10 @@ function buildChartConfig() {
         },
         options: {
             plugins: {
-                title: { display: true, text: 'Expenses Pie Chart' }
-            }
+                title: { display: false },
+                legend: { display: false }
+            },
+
         }
     };
 }

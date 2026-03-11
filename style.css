@@ -9,7 +9,7 @@
     --column-gap: 40px;
 }
 
-* {  
+* {
     box-sizing: border-box;
 }
 
@@ -30,7 +30,7 @@ header {
     color: white;
     padding: 20px;
     background-color: var(--primary-color);
-    max-height:200px
+    max-height: 200px
 }
 
 header div.logo h1 {
@@ -48,20 +48,20 @@ nav {
 }
 
 main {
-   display: flex;
-   flex-direction: column no-wrap;
-   gap: var(--column-gap);
-   max-width: 1440px;
-   margin: 0 auto;
-   padding: 1.25rem 3.5rem;
+    display: flex;
+    flex-direction: column no-wrap;
+    gap: var(--column-gap);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 1.25rem 3.5rem;
 }
 
-main > section:first-child {
+main>section:first-child {
     border-right: solid 3px var(--primary-color);
     width: 60%;
 }
 
-main > section {
+main>section {
     width: 40%;
 }
 
@@ -72,11 +72,12 @@ main > section {
 }
 
 #expenses {
-    display:  grid;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-right: 50px;
 }
+
 .flex {
     display: flex;
     flex-direction: row;
@@ -89,7 +90,10 @@ main > section {
     flex-direction: row;
 }
 
-select, option, input, .monthlyStats section span {
+select,
+option,
+input,
+.monthlyStats section span {
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid var(--primary-color);
@@ -98,14 +102,14 @@ select, option, input, .monthlyStats section span {
 }
 
 .monthlyStats section span {
-    background-color: var(--background-color);
+    background-color: white;
     color: var(--second-text-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#expenses > section {
+#expenses>section {
     background-color: var(--secondary-color);
     /* padding: 1rem; */
     border-radius: 0.5rem;
@@ -119,7 +123,7 @@ select, option, input, .monthlyStats section span {
     border-radius: 0.5rem 0.5rem 0 0;
     padding-top: 0.5rem;
     padding-left: 0.5rem;
-    display:inline-flex;
+    display: inline-flex;
     width: 100%;
     justify-content: space-between;
 }
@@ -148,7 +152,7 @@ select, option, input, .monthlyStats section span {
 }
 
 /*Formats the panels into row (cost inputs)*/
-.panel{
+.panel {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto(4, 1fr);
@@ -227,15 +231,15 @@ input:checked~div.other-expenses {
     cursor: pointer;
 }
 
-.monthlyStats{
+.monthlyStats {
     display: grid;
     grid-area: 1fr 1fr / 1fr 1fr;
     grid-template-areas: 'mi me'
-                         'ms ys' ;
+        'ms ys';
     gap: 10px;
 }
 
-#expenses input{
+#expenses input {
     max-width: 100px;
 }
 
@@ -245,6 +249,7 @@ input:checked~div.other-expenses {
     justify-content: space-between;
     width: 100%;
     margin: 0.5rem;
+
     & span:first-of-type {
         display: flex;
         align-items: center;
@@ -253,6 +258,7 @@ input:checked~div.other-expenses {
         background-color: var(--third-color);
         color: var(--second-text-color);
         padding: 5px;
+
         &::after {
             content: "$";
         }
@@ -272,3 +278,8 @@ input:checked~div.other-expenses {
     }
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
