@@ -89,12 +89,23 @@ main > section {
     flex-direction: row;
 }
 
-select, option, input {
+select, option, input, .monthlyStats section span {
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid var(--primary-color);
     border-radius: 0.25rem;
     width: 100%;
+}
+
+.monthlyStats section span {
+    background-color: var(--background-color);
+    color: var(--second-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &::after {
+        content: "$";
+    }
 }
 
 #expenses > section {
@@ -237,7 +248,7 @@ input:checked~div.other-expenses {
     justify-content: space-between;
     width: 100%;
     margin: 0.5rem;
-    & span {
+    & span:first-of-type {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -249,6 +260,14 @@ input:checked~div.other-expenses {
             content: "$";
         }
 
+    }
+
+    & [id^="total"] {
+        width: 100px;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid var(--primary-color);
+        border-radius: 0.25rem;
     }
 
     & input {

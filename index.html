@@ -33,7 +33,7 @@
                 </div>
                 <div id="income" class="flex column">
                     <label for="income">Annual Salary: $</label>
-                    <input type="number" id="income">
+                    <input type="number" id="incomeInput">
                 </div>
             </div>
 
@@ -48,19 +48,23 @@
                         <img src="../images/add.png" alt="Add cost field button">
                         <article class="inputSection">
                             <span>Federal Income Tax</span>
-                            <input name="Federal Income Tax"></input>
+                            <input name="Federal Income Tax" id="federal-tax"></input>
                         </article>
                         <article class="inputSection">
                             <span>State Income Tax</span>
-                            <input name="State Income Tax"></input>
+                            <input name="State Income Tax" id="state-tax"></input>
                         </article>
                         <article class="inputSection">
                             <span>Social Security</span>
-                            <input name="Social Security"></input>
+                            <input name="Social Security" id="social-security-tax"></input>
                         </article>
                         <article class="inputSection">
                             <span>Medicare</span>
-                            <input name="Medicare"></input>
+                            <input name="Medicare" id="medicare-tax"></input>
+                        </article>
+                        <article class="inputSection">
+                            <span id="label-total-income-tax">Total</span>
+                            <span id="total-income-tax"></span>
                         </article>
                     </div>
                 </section>
@@ -74,7 +78,7 @@
                     <div class="panel monthly-liabilities"> <!-- make this class-->
                         <!-- Add the plus button and all input fields into here and do it for all the other sections-->
                         <img src="../images/add.png" alt="Add cost field button">
-                        <article class="inputSection" id="house">
+                        <article class="inputSection">
                             <span>House Payment</span>
                             <input name="House Payment" id="house"></input>
                         </article>
@@ -90,6 +94,10 @@
                             <span>Other Debts</span>
                             <input name="Other Debts" id="debts"></input>
                         </article>
+                        <article class="inputSection">
+                            <span id="label-total-monthly-liabilities">Total</span>
+                            <span id="total-monthly-liabilities"></span>
+                        </article>
                     </div>
                 </section>
 
@@ -104,22 +112,27 @@
 
                         <article class="inputSection">
                             <span>Groceries</span>
-                            <input name="Groceries"></input>
+                            <input name="Groceries" id="groceries"></input>
                         </article>
 
                         <article class="inputSection">
                             <span>Gas & Travel</span>
-                            <input name="Gas and Travel"></input>
+                            <input name="Gas and Travel" id="travel"></input>
                         </article>
 
                         <article class="inputSection">
                         <span>Child Care</span>
-                        <input name="Child Care"></input>
+                        <input name="Child Care" id="child-care"></input>
                         </article>
 
                         <article class="inputSection">
                             <span>Medical</span>
-                            <input name="Medical"></input>
+                            <input name="Medical" id="medical"></input>
+                        </article>
+
+                        <article class="inputSection">
+                            <span id="label-total-monthly-essentials">Total</span>
+                            <span id="total-monthly-essentials"></span>
                         </article>
                     </div>
 
@@ -136,22 +149,27 @@
 
                         <article class="inputSection">
                             <span>Auto Insurance</span>
-                            <input name="Auto Insurance"></input>
+                            <input name="Auto Insurance" id="autoInsure"></input>
                         </article>
 
                         <article class="inputSection">
                             <span>Home Insurance</span>
-                            <input name="Home Insurance"></input>
+                            <input name="Home Insurance" id="homeInsure"></input>
                         </article>
 
                         <article class="inputSection">
                             <span>Health Insurance</span>
-                            <input name="Health Insurance"></input>
+                            <input name="Health Insurance" id="healthInsure"></input>
                         </article>
 
                         <article class="inputSection">
                             <span>Life Insurance</span>
-                            <input name="Life Insurance"></input>
+                            <input name="Life Insurance" id="lifeInsure"></input>
+                        </article>
+
+                        <article class="inputSection">
+                            <span id="label-total-monthly-insurance">Total</span>
+                            <span id="total-monthly-insurance"></span>
                         </article>
                     </div>
                 </section>
@@ -166,7 +184,12 @@
                         <img src="../images/add.png" alt="Add cost field button">
                         <article class="inputSection">
                             <span>Other Expenses</span>
-                            <input name="Other"></input>
+                            <input name="Other" id="other"></input>
+                        </article>
+
+                        <article class="inputSection">
+                            <span id="label-total-monthly-other">Total</span>
+                            <span id="total-monthly-other"></span>
                         </article>
                     </div>
                 </section>
@@ -176,7 +199,7 @@
 
 
         <section id="chart">
-            <canvas id="chart"></canvas>
+            <canvas id="chartCanvas"></canvas>
             <section id="analysis">
                 <section id="analysisStatistics">
 
@@ -185,22 +208,22 @@
                 <section class="monthlyStats">
                     <section id="monthlyIncome">
                         <h3>Monthly Income</h3>
-                        <input type="text" placeholder="$">
+                        <span type="text" placeholder="$" id="monthy-income"></span>
                         <!--javascript will fill info in-->
                     </section>
                     <section id="monthlyExpenses">
                         <h3>Monthly Expenses</h3>
-                        <input type="text" placeholder="$">
+                        <span type="text" placeholder="$" id="monthly-expenses"></span>
                         <!--javascript will fill info in-->
                     </section>
                     <section id="monthlySavings">
                         <h3>Monthly Savings</h3>
-                        <input type="text" placeholder="$">
+                        <span type="text" placeholder="$" id="monthly-savings"></span>
                         <!--javascript will fill info in-->
                     </section>
                     <section id="yearlySavings">
                         <h3>Yearly Savings</h3>
-                        <input type="text" placeholder="$">
+                        <span type="text" placeholder="$" id="yearly-savings"></span>
                         <!--javascript will fill info in-->
                     </section>
 

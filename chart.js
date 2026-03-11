@@ -1,11 +1,13 @@
 // --- DOM Setup ---
 
-const canvas = document.getElementById('chart');
-const incomeInput = document.getElementById('incomeInput');
-const housingInput = document.getElementById('house');
-const carLoanInput = document.getElementById('car');
-const creditInput = document.getElementById('credit');
-const debtsInput = document.getElementById('debts')
+const canvas = document.getElementById('chartCanvas');
+const income = document.getElementById('incomeInput');
+const taxes = document.getElementById('total-income-tax');
+const liabilities = document.getElementById('total-monthly-liabilities');
+const essentials = document.getElementById('total-monthly-essentials');
+const insurance = document.getElementById('total-monthly-insurance');
+const other = document.getElementById('total-monthly-other');
+
 //Add in the other inputs that are needed for the chart *DON'T include income or tax*
 
 let currentChart = null;
@@ -14,7 +16,7 @@ let currentChart = null;
 function buildChartConfig() {
 
   const labels = ['Housing', 'Car Loans', 'Credit Cards', 'Other Debts'];
-  const data = [housingInput, carLoanInput, creditInput, debtsInput];
+  const data = [taxes, liabilities, essentials, insurance, other].map(el => parseFloat(el.textContent) || 0);
     //Add in data and labels for the inputs added
   return {
     type: 'doughnut',
@@ -68,3 +70,9 @@ document.body.addEventListener('input', () => {
 });
 
 initChart();
+
+//Chart labels
+const monthlyIncome = document.getElementById('monthly-income');
+const monthlyExpenses = document.getElementById('monthly-expenses');
+const monthlySavings = document.getElementById('monthly-savings');
+const yearlySavings = document.getElementById('yearly-savings');
