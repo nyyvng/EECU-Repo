@@ -103,9 +103,6 @@ select, option, input, .monthlyStats section span {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    &::after {
-        content: "$";
-    }
 }
 
 #expenses > section {
