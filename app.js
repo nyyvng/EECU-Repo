@@ -1,37 +1,52 @@
 // @ts-check
 
-const template = /** @type {HTMLTemplateElement} */ (
-    document.getElementById('cost-input')
-); //Grabs the template from HTML
-customElements.define(
-    'cost-inputs',
-    class extends HTMLElement {
-        //Defines a custom element called "cost-inputs"
-        static get observedAttributes() {
-            return ['name'];
-        }
-        constructor() {
-            super();
-            this.attachShadow({ mode: 'open' });
-            this.shadowRoot?.appendChild(template.content.cloneNode(true));
-        }
-        connectedCallback() {
-            /** @type {HTMLLabelElement} */ (
-                this.shadowRoot?.querySelector('label')
-            ).textContent = this.getAttribute('name');
-        }
-    }
-);
+// const template = /** @type {HTMLTemplateElement} */ (
+//     document.getElementById('cost-input')
+// ); //Grabs the template from HTML
+// customElements.define(
+//     'cost-inputs',
+//     class extends HTMLElement {
+//         //Defines a custom element called "cost-inputs"
+//         static get observedAttributes() {
+//             return ['name'];
+//         }
+//         constructor() {
+//             super();
+//             this.attachShadow({ mode: 'open' });
+//             this.shadowRoot?.appendChild(template.content.cloneNode(true));
+//         }
+//         connectedCallback() {
+//             /** @type {HTMLLabelElement} */ (
+//                 this.shadowRoot?.querySelector('label')
+//             ).textContent = this.getAttribute('name');
+//         }
+//     }
+// );
 
-const headers = document.querySelectorAll('.section-header');
+/////////////////////////////////////////////////
+// unsure if this top section would work... so i'll comment it out for now
 
-for (let header of headers) {
+const headers = document.querySelectorAll(".section-header");
+
+headers.forEach(header => {
     header.addEventListener('click', e => {
         // add event listener to each, when it click change the panel class display
         // if display == block set to none, else set to block
         // this will hopefully allow the dropdowns to work 😁
+        const panel = /** @type {HTMLElement} */ (
+            header.parentElement?.querySelector(".panel")
+        );
+
+        if (!panel) return;
+        if (panel.style.display === "grid") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "grid";
+        }
     });
-}
+});
+
+
 
 //Total Tax Calculator
 const taxTotal = /** @type {HTMLSpanElement} */ (
@@ -203,14 +218,15 @@ addEventListener('input', () => {
     
     const incomeValue = income?.textContent?.replace(/[$,]/g, '') || '0'; 
     const expensesValue = expenses?.textContent?.replace(/[$,]/g, '') || '0';
+
     expenses.textContent = format_money(
         [...document.querySelectorAll('span[id^=total-]').values()].reduce(
-            (acc, curr) => acc + +curr.textContent, // still haviing errors
+            (acc, curr) => acc + +curr.textContent, // still haviing errors, or not?
             0
         )
     );
     savings.textContent = format_money(
-        +income.textContent.replace(/[$,]/g, '') - // still having errors
+        +income.textContent.replace(/[$,]/g, '') - // still having errors, or not?
             +expenses.textContent.replace(/[$,]/g, '')
     );
     yearly_savings.textContent = format_money(
