@@ -1,35 +1,44 @@
 // @ts-check
 
-// const template = /** @type {HTMLTemplateElement} */ (
-//     document.getElementById('cost-input')
-// ); //Grabs the template from HTML
-// customElements.define(
-//     'cost-inputs',
-//     class extends HTMLElement {
-//         //Defines a custom element called "cost-inputs"
-//         static get observedAttributes() {
-//             return ['name'];
-//         }
-//         constructor() {
-//             super();
-//             this.attachShadow({ mode: 'open' });
-//             this.shadowRoot?.appendChild(template.content.cloneNode(true));
-//         }
-//         connectedCallback() {
-//             /** @type {HTMLLabelElement} */ (
-//                 this.shadowRoot?.querySelector('label')
-//             ).textContent = this.getAttribute('name');
-//         }
-//     }
-// );
+// fetching careers
 
-/////////////////////////////////////////////////
-// unsure if this top section would work... so i'll comment it out for now
+const salary = document.getElementById('salary');
+async function careerSelector() {
+    const url = "https://eecu-data-server.vercel.app/data";
+    const selectCareer = document.getElementById('careerOption');
+    const careerMap = new Map();
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error status: ${response.status}`);
+        }
 
+        const users = await response.json();
+
+        console.log(users, "careers");
+
+        users.forEach(user => {
+            careerMap.set(user["Career"], user["Salary"]);
+            const option = new Option(user["Career"], user["Salary"]);
+            selectCareer.add(option);
+        });
+
+        selectCareer.addEventListener('change', event => {
+            salary.textContent = careerMap.get(selectCareer.value) || '';
+
+
+    } catch (error) {
+        console.error('Error fetching careers:', error);
+    }
+}
+careerSelector(); // this messed up bad
+
+
+//Dropdowns (currently not working, will fix later)
 const headers = document.querySelectorAll(".section-header");
 
 headers.forEach(header => {
-    header.addEventListener('click', e => {
+    header.addEventListener('click', () => {
         // add event listener to each, when it click change the panel class display
         // if display == block set to none, else set to block
         // this will hopefully allow the dropdowns to work 😁
@@ -38,10 +47,10 @@ headers.forEach(header => {
         );
 
         if (!panel) return;
-        if (panel.style.display === "grid") {
+        if (panel.style.display === "block" || panel.style.display === "grid") {
             panel.style.display = "none";
         } else {
-            panel.style.display = "grid";
+            panel.style.display = "block";
         }
     });
 });
@@ -215,19 +224,17 @@ addEventListener('input', () => {
         document.querySelectorAll(
             'section > section > .monthlyStats > section > span'
         );
-    
-    const incomeValue = income?.textContent?.replace(/[$,]/g, '') || '0'; 
-    const expensesValue = expenses?.textContent?.replace(/[$,]/g, '') || '0';
+
 
     expenses.textContent = format_money(
         [...document.querySelectorAll('span[id^=total-]').values()].reduce(
-            (acc, curr) => acc + +curr.textContent, // still haviing errors, or not?
+            (acc, curr) => acc + +(curr.textContent ?? '0'),
             0
         )
     );
     savings.textContent = format_money(
-        +income.textContent.replace(/[$,]/g, '') - // still having errors, or not?
-            +expenses.textContent.replace(/[$,]/g, '')
+        +(income?.textContent?.replace(/[$,]/g, '') || '0') -
+        +expenses.textContent.replace(/[$,]/g, '')
     );
     yearly_savings.textContent = format_money(
         +savings.textContent.replace(/[$,]/g, '') * 12

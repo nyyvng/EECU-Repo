@@ -49,7 +49,8 @@ nav {
 
 main {
     display: flex;
-    flex-direction: column no-wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: var(--column-gap);
     max-width: 1440px;
     margin: 0 auto;
@@ -83,6 +84,8 @@ main>section {
     flex-direction: row;
     gap: 1rem;
     padding: 1rem;
+    margin: 10px;
+    margin-right: 0px;
     justify-content: center;
 }
 
@@ -97,8 +100,8 @@ input,
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid var(--primary-color);
-    border-radius: 0.25rem;
-    width: 100%;
+    /* border-radius: 0.25rem; */
+    width: 260px;
 }
 
 .monthlyStats section span {
@@ -111,8 +114,6 @@ input,
 
 #expenses>section {
     background-color: var(--secondary-color);
-    /* padding: 1rem; */
-    border-radius: 0.5rem;
 }
 
 .section-header {
@@ -120,13 +121,15 @@ input,
     font-weight: bold;
     background-color: var(--primary-color);
     color: white;
-    border-radius: 0.5rem 0.5rem 0 0;
     padding-top: 0.5rem;
     padding-left: 0.5rem;
     display: inline-flex;
-    width: 100%;
+    width: 375px;
     justify-content: space-between;
+    cursor: pointer;
+
 }
+
 
 .section-header h3 {
     margin: 0;
@@ -157,7 +160,7 @@ input,
     grid-template-columns: 100%;
     grid-template-rows: repeat(4, auto);
     padding: 1rem;
-    display: none;
+    /* display: none; */
 }
 
 .panel input {
@@ -271,7 +274,7 @@ input:checked~div.other-expenses {
         padding: 0.5rem;
         font-size: 1rem;
         border: 1px solid var(--primary-color);
-        border-radius: 0.25rem;
+        /* border-radius: 0.25rem; */
     }
 
     & input {
