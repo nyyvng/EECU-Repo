@@ -1,37 +1,34 @@
 // @ts-check
 
-// fetching careers
 
-const salary = document.getElementById('salary');
+
+//Career Select 
 async function careerSelector() {
-    const url = "https://eecu-data-server.vercel.app/data";
     const selectCareer = document.getElementById('careerOption');
-    const careerMap = new Map();
     try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error status: ${response.status}`);
+        const reponse = await fetch("https://eecu-data-server.vercel.app/data");
+        if (!reponse.ok) {
+            throw new Error("Network response not ok");
         }
 
-        const users = await response.json();
+        const users = await reponse.json();
 
-        console.log(users, "careers");
+        console.log(users);
 
-        users.forEach(user => {
-            careerMap.set(user["Career"], user["Salary"]);
-            const option = new Option(user["Career"], user["Salary"]);
-            selectCareer.add(option);
+        /** @type {{ Occupation: string }} */
+        users.forEach(/** @param {{ Occupation: string }} user */ user => {
+            const option = document.createElement('option');
+            option.text = user["Occupation"];
+            option.value = user["Occupation"];
+
+            selectCareer?.appendChild(option);
+
         });
-
-        selectCareer.addEventListener('change', event => {
-            salary.textContent = careerMap.get(selectCareer.value) || '';
-
-
     } catch (error) {
         console.error('Error fetching careers:', error);
     }
 }
-careerSelector(); // this messed up bad
+careerSelector();
 
 
 //Dropdowns (currently not working, will fix later)

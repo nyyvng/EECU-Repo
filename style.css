@@ -223,7 +223,7 @@ input:checked~div.other-expenses {
     display: block;
 }
 
-#dropCheck {
+.dropCheck {
     margin-right: 10px;
     max-width: 20px;
     max-height: 20px;
