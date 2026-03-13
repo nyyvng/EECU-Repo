@@ -47,10 +47,16 @@ headers.forEach(header => {
         if (panel.style.display === "block" || panel.style.display === "grid") {
             panel.style.display = "none";
         } else {
-            panel.style.display = "block";
+            panel.style.display = "grid";
         }
     });
 });
+
+//Rotate dropCheck button (currently not working)
+function rotateDropCheck() {
+    const dropCheck = document.getElementById("drop-Check");
+    dropCheck?.classList.toggle("drop-Check");
+}
 
 
 

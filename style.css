@@ -7,6 +7,7 @@
     --third-color: #BCD4EA;
     --background-color: #E8F3FC;
     --column-gap: 40px;
+    --hover-color: #0665bd;
 }
 
 * {
@@ -55,11 +56,13 @@ main {
     max-width: 1440px;
     margin: 0 auto;
     padding: 1.25rem 3.5rem;
+    grid-template-rows: minmax(0, auto);
 }
 
 main>section:first-child {
     border-right: solid 3px var(--primary-color);
     width: 60%;
+    margin-left: 0px;
 }
 
 main>section {
@@ -77,6 +80,8 @@ main>section {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-right: 50px;
+    margin-left:0px;
+    padding: 0px;
 }
 
 .flex {
@@ -102,6 +107,7 @@ input,
     border: 1px solid var(--primary-color);
     /* border-radius: 0.25rem; */
     width: 260px;
+    height: 40px;
 }
 
 .monthlyStats section span {
@@ -135,7 +141,10 @@ input,
     margin: 0;
 }
 
-
+.section-header:hover {
+    background-color: var(--hover-color);
+    transition: 0.2s ease;
+}
 
 
 #monthlyLiabilities {
@@ -168,7 +177,6 @@ input,
     /* margin-bottom: 0.5rem; */
 }
 
-/*Change theses values to be unique for each div. You need to give each input element from the HTML file a unique class, then link each input to their respecive CSS files*/
 /*For monthly*/
 
 
@@ -233,6 +241,13 @@ input:checked~div.other-expenses {
     background-color: transparent;
     border: none;
     cursor: pointer;
+
+}
+
+/* does not work at the momment*/
+.dropCheck-90 {
+    transform: rotate(90deg);
+    transition: transform 0.5s ease;
 }
 
 .monthlyStats {
@@ -241,6 +256,7 @@ input:checked~div.other-expenses {
     grid-template-areas: 'mi me'
         'ms ys';
     gap: 10px;
+    margin: 0px;
 }
 
 #expenses input {
@@ -252,6 +268,7 @@ input:checked~div.other-expenses {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    height: 40px;
     margin: 0.5rem;
 
     & span:first-of-type {
@@ -282,9 +299,9 @@ input:checked~div.other-expenses {
     }
 }
 
+/* hides number input arrows */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
-
