@@ -240,7 +240,7 @@ label {
 }
 
 /* does not work at the momment*/
-.dropCheck-90 {
+.rotate {
     transform: rotate(-90deg);
 }
 

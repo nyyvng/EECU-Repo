@@ -3,6 +3,10 @@
 
 
 //Career Select 
+/**
+ * @type {{ Occupation: string; "Annual Salary": string | number; }[]}
+ */
+let careerData = [];
 async function careerSelector() {
     const selectCareer = document.getElementById('careerOption');
     try {
@@ -11,12 +15,12 @@ async function careerSelector() {
             throw new Error("Network response not ok");
         }
 
-        const users = await reponse.json();
+        careerData = await reponse.json();
 
-        console.log(users);
+        console.log(careerData);
 
         /** @type {{ Occupation: string }} */
-        users.forEach(/** @param {{ Occupation: string }} user */ user => {
+        careerData.forEach(/** @param {{ Occupation: string }} user */ user => {
             const option = document.createElement('option');
             option.text = user["Occupation"];
             option.value = user["Occupation"];
@@ -29,6 +33,19 @@ async function careerSelector() {
     }
 }
 careerSelector();
+const careerSelect = document.getElementById("careerOption");
+const incomeInput = document.getElementById("incomeInput");
+
+careerSelect?.addEventListener("change", () => {
+    // @ts-ignore
+    const selectedCareer = careerSelect.value;
+    const career = careerData.find(job => job.Occupation === selectedCareer);
+    if (career && incomeInput) {
+        // @ts-ignore
+        incomeInput.value = career["Salary"];
+        calculateAllTaxes();
+    }
+});
 
 
 //Dropdowns (dropCheck button was added to this section but unfortunately doesnt work for some reason)
@@ -62,12 +79,43 @@ headers.forEach(header => {
     });
 });
 
-//Rotate dropCheck button (currently not working)
-function rotateDropCheck() {
-    const dropCheck = document.getElementById("drop-Check");
-    dropCheck?.classList.toggle("drop-Check");
-}
 
+
+//Federal Tax Calculator
+/**
+ * @param {number} taxableIncome
+ */
+function calculateFedTax(taxableIncome) {
+    let tax = 0;
+    if (taxableIncome <= 12400) {
+        tax = taxableIncome * 0.10;
+    } else if (taxableIncome <= 50400) {
+        tax = (12400 * 0.10) + ((taxableIncome - 12400) * 0.12);
+    } else {
+        tax = (12400 * 0.10) + ((50400 - 12400) * 0.12) + ((taxableIncome - 50400) * 0.22);
+    }
+    return tax;
+}
+// Calculating all other taxes
+function calculateAllTaxes() {
+    // @ts-ignore
+    const income = parseFloat(incomeInput.value) || 0;
+
+    const medicare = income * 0.0145;
+    const socialSecurity = income * 0.062;
+    const stateTax = income * 0.04;
+    const standardDeduction = 16100;
+
+    const taxableIncome = Math.max(0, income - standardDeduction);
+    const federalTax = calculateFedTax(taxableIncome);
+
+    federalInput.value = (federalTax / 12).toFixed(2);
+    stateInput.value = (stateTax / 12).toFixed(2);
+    securityInput.value = (socialSecurity / 12).toFixed(2);
+    medicareInput.value = (medicare / 12).toFixed(2);
+
+    taxTotal.textContent = ((federalTax + stateTax + socialSecurity + medicare) / 12).toFixed(2);
+}
 
 
 //Total Tax Calculator
@@ -86,6 +134,8 @@ const securityInput = /** @type {HTMLInputElement} */ (
 const medicareInput = /** @type {HTMLInputElement} */ (
     document.getElementById('medicare-tax')
 );
+
+
 
 function calculateTaxes() {
     let payingTaxTotal =
@@ -227,6 +277,7 @@ function format_money(money, omit_dollar_sign = false) {
 }
 
 document.querySelector('#incomeInput')?.addEventListener('input', event => {
+    calculateAllTaxes();
     /** @type {HTMLSpanElement} */ (
         document.querySelector(
             'section > section > .monthlyStats > section > #monthly-income'
