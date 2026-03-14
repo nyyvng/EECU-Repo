@@ -197,6 +197,10 @@ const otherTotal = /** @type {HTMLSpanElement} */ (
 const otherInput = /** @type {HTMLInputElement} */ (
     document.getElementById('other')
 );
+//wisetip element
+const wiseTip = /** @type {HTMLParagraphElement} */ (
+    document.getElementById('wise-tip')
+);
 
 addEventListener('input', () => {
     otherTotal.textContent = parseFloat(otherInput.value || '0').toFixed(2);
@@ -248,8 +252,44 @@ addEventListener('input', () => {
     savings.textContent = format_money(
         +(income?.textContent?.replace(/[$,]/g, '') || '0') -
         +expenses.textContent.replace(/[$,]/g, '')
+
+
     );
+    // monthly balance coloring
+    const savingsValue = +(savings.textContent.replace(/[$,]/g, '') || '');
+    savings.classList.remove("positive-balance", "negative-balance");
+
+    if (savingsValue < 0) {
+        savings.classList.add("negative-balance");
+    } else {
+        savings.classList.add("positive-balance");
+    }
+
+    
     yearly_savings.textContent = format_money(
         +savings.textContent.replace(/[$,]/g, '') * 12
     );
+    // yearly balance coloring
+    yearly_savings.classList.remove("positive-balance", "negative-balance");
+
+    if (savingsValue < 0) {
+        yearly_savings.classList.add("negative-balance");
+    } else {
+        yearly_savings.classList.add("positive-balance");
+    }
+
+    // wise up tip
+    const monthlyIncome = +(income?.textContent?.replace(/[$,]/g, '') || '0');
+
+    const monthlySavings = +(savings?.textContent?.replace(/[$,]/g, '') || '0');
+
+    if (monthlyIncome > 0) {
+        const savingsRate = monthlySavings / monthlyIncome;
+
+        if (savingsRate < 0.10) {
+            wiseTip.textContent = "Wise-up Tip: Try to save at least 10% of your income.";
+        } else {
+            wiseTip.textContent = "";
+        }
+    }
 });

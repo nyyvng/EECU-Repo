@@ -1,13 +1,14 @@
 :root {
     --primary-color: #0054A3;
     --secondary-color: white;
-    --accent-color: #FF6F61;
+    --accent-color: #ff3b29;
     --text-color: #333333;
     --second-text-color: #002649;
     --third-color: #BCD4EA;
     --background-color: #E8F3FC;
     --column-gap: 40px;
     --hover-color: #0665bd;
+    --wise-text-color: #0b7441;
 }
 
 * {
@@ -106,7 +107,6 @@ input,
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid var(--primary-color);
-    /* border-radius: 0.25rem; */
     width: 100%;
     max-width: 260px;
     height: 40px;
@@ -114,7 +114,6 @@ input,
 
 .monthlyStats section span {
     background-color: white;
-    color: var(--second-text-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -306,11 +305,19 @@ input::-webkit-inner-spin-button {
 #wise-tip {
     margin-top: 10px;
     font-weight: bold;
-    color: var(--text-color);
+    font-size: 20px;
+    color: var(--wise-text-color);
 }
 
-
-
+/* monthly balance */
+.positive-balance {
+    color: var(--wise-text-color);
+    font-weight: bold;
+}
+.negative-balance {
+    color: var(--accent-color);
+    font-weight: bold;
+}
 
 
 
