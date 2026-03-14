@@ -31,32 +31,36 @@ async function careerSelector() {
 careerSelector();
 
 
-//Dropdowns (currently not working, will fix later)
+//Dropdowns (dropCheck button was added to this section but unfortunately doesnt work for some reason)
 const headers = document.querySelectorAll(".section-header");
 
 headers.forEach(header => {
     header.addEventListener('click', () => {
-        // add event listener to each, when it click change the panel class display
-        // if display == block set to none, else set to block
-        // this will hopefully allow the dropdowns to work 😁
+
         const panel = /** @type {HTMLElement} */ (
             header.parentElement?.querySelector(".panel")
         );
+        const button = /** @type {HTMLButtonElement} */ (
+            header.querySelector(".dropCheck")
+        );
+
+        panel?.classList.toggle("open");
 
         if (!panel) return;
-        if (panel.style.display === "block" || panel.style.display === "grid") {
-            panel.style.display = "none";
-        } else {
+
+        if (button) {
+            button.classList.toggle("rotate");
+        }
+
+        const panelStyle = window.getComputedStyle(panel).display;
+
+        if (panelStyle === "none") {
             panel.style.display = "grid";
+        } else {
+            panel.style.display = "none";
         }
     });
 });
-
-//Rotate dropCheck button (currently not working)
-function rotateDropCheck() {
-    const dropCheck = document.getElementById("drop-Check");
-    dropCheck?.classList.toggle("drop-Check");
-}
 
 
 
@@ -243,3 +247,61 @@ addEventListener('input', () => {
         +savings.textContent.replace(/[$,]/g, '') * 12
     );
 });
+
+
+
+
+
+//Tax calculation (unsure if this works)
+const initialIncome = parseFloat((/** @type {HTMLInputElement|null} */(document.getElementById("incomeInput")))?.value || '0');
+
+/**
+ * @param {number} income
+ */
+function federalTax(income) {
+    if (income <= 12400) {
+        return income * 0.10;
+    }
+    if (income <= 50400) {
+        return (12400 * 0.10) + ((income - 12400) * 0.12);
+    }
+    return (12400 * 0.10) + ((50400 - 12400) * 0.12) + ((income - 50400) * 0.22);
+}
+
+function calculateTaxesFromIncome() {
+
+
+    const incomeInput = document.getElementById("incomeInput");
+    if (!incomeInput) {
+        return;
+    }
+
+    const income = parseFloat((/** @type {HTMLInputElement} */ (incomeInput)).value) || 0;
+
+    const standardDeduction = 16100;
+
+    const taxableIncome = Math.max(0, income - standardDeduction);
+
+    const federal = federalTax(taxableIncome);
+    const state = income * 0.04;
+    const social = income * 0.062;
+    const medicare = income * 0.0145;
+
+    const federalInput = document.getElementById("federal-tax");
+    const stateInput = document.getElementById("state-tax");
+    const securityInput = document.getElementById("social-security-tax");
+    const medicareInput = document.getElementById("medicare-tax");
+
+    if (
+        federalInput instanceof HTMLInputElement &&
+        stateInput instanceof HTMLInputElement &&
+        securityInput instanceof HTMLInputElement &&
+        medicareInput instanceof HTMLInputElement
+    ) {
+        federalInput.value = (federal / 12).toFixed(2);
+        stateInput.value = (state / 12).toFixed(2);
+        securityInput.value = (social / 12).toFixed(2);
+        medicareInput.value = (medicare / 12).toFixed(2);
+    }
+
+}
