@@ -2,7 +2,7 @@
     --primary-color: #0054A3;
     --secondary-color: white;
     --accent-color: #ff3b29;
-    --text-color: #333333;
+    --text-color: #09043e;
     --second-text-color: #002649;
     --third-color: #BCD4EA;
     --background-color: #E8F3FC;
@@ -32,7 +32,7 @@ header {
     color: white;
     padding: 20px;
     background-color: var(--primary-color);
-    max-height: 200px
+    max-height: 200px;
 }
 
 header div.logo h1 {
@@ -48,6 +48,15 @@ nav {
     flex-direction: row;
     padding: 10px;
 }
+
+i {
+    font-size: 13px;
+    opacity: 50%;
+    color: var(--text-color);
+    margin: auto;
+    padding: 10px;
+} 
+
 
 main {
     display: flex;
@@ -346,13 +355,25 @@ input::-webkit-inner-spin-button {
 
     main>section:first-child {
         border-right: none;
+        border-bottom: 3px var(--primary-color);
+        border-bottom-style: solid;
+        margin-bottom: 0rem;
+        padding-bottom: 30px;
         width: 100%;
+    }
+
+    header {
+        width: 900000px;
+    }
+
+    header div.logo h1 {
+        background-repeat: no-repeat;
     }
 
     #expenses {
         grid-template-columns: 1fr;
         width: 100%;
-        
+        max-width: 100%;
     }
 
     select, input, .monthlyStats section span {

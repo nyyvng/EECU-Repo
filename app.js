@@ -191,7 +191,7 @@ const travelInput = /** @type {HTMLInputElement} */ (
     document.getElementById('travel')
 );
 const childCareInput = /** @type {HTMLInputElement} */ (
-    document.getElementById('child-care')
+    document.getElementById('utilities')
 );
 const medicalInput = /** @type {HTMLInputElement} */ (
     document.getElementById('medical')
@@ -247,13 +247,31 @@ const otherTotal = /** @type {HTMLSpanElement} */ (
 const otherInput = /** @type {HTMLInputElement} */ (
     document.getElementById('other')
 );
+const diningOutInput = /** @type {HTMLInputElement} */ (
+    document.getElementById('dining-out')
+);
+const gymInput = /** @type {HTMLInputElement} */ (
+    document.getElementById('gym')
+);
+const streamingInput = /** @type {HTMLInputElement} */ (
+    document.getElementById('streaming')
+);
 //wisetip element
 const wiseTip = /** @type {HTMLParagraphElement} */ (
     document.getElementById('wise-tip')
 );
 
+function otherExpenses() {
+    let payingOtherExpenses =
+        parseFloat(otherInput.value || '0') +
+        parseFloat(diningOutInput.value || '0') +
+        parseFloat(gymInput.value || '0') +
+        parseFloat(streamingInput.value || '0');
+    return payingOtherExpenses.toFixed(2);
+}
+
 addEventListener('input', () => {
-    otherTotal.textContent = parseFloat(otherInput.value || '0').toFixed(2);
+    otherTotal.textContent = otherExpenses();
 });
 
 /**

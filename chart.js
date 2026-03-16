@@ -17,7 +17,7 @@ let currentChart = null;
 
 // Build chart config from current input values
 function buildChartConfig() {
-    const labels = ['Income Taxes', 'Monthly Liabilities', 'Foods & Essentials', 'Insurance', 'Other Expenses', "Reamaining Balance"];
+    const labels = ['Income Taxes', 'Monthly Expesnes', 'Foods & Essentials', 'Insurance', 'Other Expenses', "Reamaining Balance"];
     const data = [taxes, liabilities, essentials, insurance, other, remaining].map(
         el => parseFloat(el.textContent) || 0
     );
@@ -36,7 +36,6 @@ function buildChartConfig() {
                         '#00AAD0', // Foods & Essentials
                         '#00D6D5', // Insurance
                         '#AAFFFF', // Other Expenses
-                        '#DBFFFF' // Remaining Balance
                     ]
                     // Change color according to palette and amount of inputs
                 }

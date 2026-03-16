@@ -23,6 +23,9 @@
 
     <main>
         <section id="calculator">
+            <!-- Note header (bc something is wrong with the annual salary where it doesnt upate the chart unless it's manually changed) -->
+            <div class="note"><i>Note: Adjust the Annual Salary input to make graph live</i></div>
+
             <h2>Career Info:</h2>
             <div class="flex">
                 <div id="career" class="flex column">
@@ -35,6 +38,7 @@
                     <label for="income">Annual Salary: $</label>
                     <input type="number" id="incomeInput">
                 </div>
+
             </div>
 
             <!-- INCOME TAXES -->
@@ -72,7 +76,7 @@
                 <!-- MONTHLY LIABILITIES -->
                 <section id="monthlyLiabilities">
                     <div class="section-header">
-                        <h3>Monthly Liabilities</h3>
+                        <h3>Monthly Expenses</h3>
                         <button class="dropCheck" type="checkbox" name="Monthly Liabilities">
                     </div>
                     <div class="panel monthly-liabilities"> <!-- make this class-->
@@ -121,8 +125,8 @@
                         </article>
 
                         <article class="inputSection">
-                        <span>Child Care</span>
-                        <input type="number" name="Child Care" id="child-care"></input>
+                            <span>Utilities</span>
+                            <input type="number" name="Utilities" id="utilities"></input>
                         </article>
 
                         <article class="inputSection">
@@ -183,6 +187,21 @@
                     <div class="panel other-expenses">
                         <img src="../images/add.png" alt="Add cost field button">
                         <article class="inputSection">
+                            <span>Dining Out</span>
+                            <input type="number" name="Dining Out" id="dining-out"></input>
+                        </article>
+
+                        <article class="inputSection">
+                            <span>Gym</span>
+                            <input type="number" name="gym" id="gym"></input>
+                        </article>
+
+                        <article class="inputSection">
+                            <span>Streaming</span>
+                            <input type="number" name="streaming" id="streaming"></input>
+                        </article>
+
+                        <article class="inputSection">
                             <span>Other Expenses</span>
                             <input type="number" name="Other" id="other"></input>
                         </article>
@@ -199,12 +218,14 @@
 
 
         <section id="chart">
-            <canvas id="chartCanvas"></canvas>
+            <div style="width: 500px; height: 500px;">
+                <canvas id="chartCanvas"></canvas>
+            </div>
             <section id="analysis">
                 <section id="analysisStatistics">
 
                 </section>
-                
+
                 <p id="wise-tip"></p>
 
                 <section class="monthlyStats">
